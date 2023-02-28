@@ -1,0 +1,7 @@
+bs4
+requests
+pandas
+tqdm
+pydantic
+cloudscraper
+humanfriendly
