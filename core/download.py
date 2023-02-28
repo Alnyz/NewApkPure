@@ -5,24 +5,22 @@ from functools import partial
 import base64
 import os
 import pathlib
+from urllib.parse import unquote
 
 class Download(object):
     def __init__(self, api) -> None:
         self.api = api
 
     def progress(self, r):
-        fname = r.url.split('p=')[-1].split('&')[0]
-        fname = base64.b64decode(
-            (fname + '==') if not fname.endswith('==') else fname
-        ).decode()
+        fname = unquote(r.url).split('p=')[-1].split('&')[0].rstrip('=')
+        fname = base64.b64decode(fname + '==').decode()
         fname = fname.replace('.', '_') + '.apk'
-
-        path = pathlib.Path(str(self.api.temp_path.removesuffix('/')) + '/apps/')
+        path = pathlib.Path(str(self.api.temp_path).removesuffix('/') + '/apps/')
         path.mkdir(mode=os.O_WRONLY, parents=True, exist_ok=True)
         f = path / fname
         with tqdm.wrapattr(
             f.open("wb"), "write",
-            desc=fname,
+            desc=fname.split('.')[0],
             unit='B', unit_scale=True, unit_divisor=1024, miniters=1,
             total=int(r.headers.get('content-length', 0))
         ) as fout:

@@ -52,6 +52,9 @@ for now just clone this repo and install all dependencies from requirements.txt 
 >>> api.download(apps, index=[1,4,7]) #<= this will download only row 1, 4 and 7
 ```
 
+## Example download output
+![output](output.png)
+
 ## NOTE
 i didn't test this on mobile, if this doesnt work please open issue or make pull request
 
