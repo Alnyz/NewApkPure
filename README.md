@@ -7,7 +7,7 @@ _FYI, i'm re-create this project just because im bored😒 and also i want to le
 _but if you want open issue or anything dont hold your self_
 ## Features
 - Simply to use, just 1, 2, 3 and there your output 😁👍
-- Fully type hinted just make sure you know how to use 😋
+- Fully type hinted for more documented 😋
 - Multithread request make your download and search more faster ⚡
 - Pandas table output make the output more pretty ❤️
 - More? soon 😁👌maybe
