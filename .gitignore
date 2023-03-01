@@ -6,7 +6,7 @@ apps/
 # C extensions
 *.so
 *.ipynb
-main.py
+
 # Distribution / packaging
 .Python
 build/
