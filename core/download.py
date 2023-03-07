@@ -30,6 +30,7 @@ class Download(object):
                 fout.write(chunk)
                 
     def putjob(self, __data) -> None:
+        # TODO: Make download in chunk
         vals = __data.reindex(columns=['download_url']).values
         val = [y for i in vals for y in i]
         reqs = self.api._Api__connection.create_connections(val, stream=True)
