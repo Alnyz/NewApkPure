@@ -2,5 +2,5 @@ from core.api import Api
 
 api = Api()
 
-y = api.search('vpn', first=False)
-api.download(y, count=3)
+y = api.search('vpn', first=False, all_page=True)
+print(y)

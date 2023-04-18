@@ -27,7 +27,7 @@ class Api(object):
         Returns:
             URLS: list of urls
         """
-        return URLS(urls=self.scrap.list_apps)
+        return URLS(urls=self.__scrap.list_apps)
     
     def download(self, __data: DataFrame, *, count: int = 0, index: List[int | None] = []) -> None:
         """download application/APK's from given data
@@ -92,6 +92,6 @@ class Api(object):
         -------
         ItemList || DataFrame
         """
-        _search = self.__scrap.search_page(query=query, first=first, all_page=all_page)
-        get_details = self.__scrap.get_detail_search(_search)
-        return ItemList(data=get_details)
+        search = self.__scrap.search_page(query=query, first=first, all_page=all_page)
+        self.__scrap.create_thread(self.__scrap.get_detail_search, search)
+        return ItemList(data=self.__scrap.results_detail)
